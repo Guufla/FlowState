@@ -197,7 +197,7 @@ MonoBehaviour:
   playerObject: {fileID: 1338340474}
   tireSize: 1
   springConstant: 700
-  damperConstant: 200
+  damperConstant: 722
 --- !u!1 &174470008 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2483265924154126176, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
@@ -379,8 +379,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.100275815, y: 0.7025497, z: -0.10103774, w: 0.6972518}
-  m_LocalPosition: {x: -5.719836, y: 3.01, z: 0.04329715}
+  m_LocalRotation: {x: 0.06795478, y: 0.7831624, z: -0.08696813, w: 0.61194396}
+  m_LocalPosition: {x: -5.418828, y: 5.7491145, z: 1.8823164}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -817,7 +817,7 @@ MonoBehaviour:
   playerObject: {fileID: 1338340474}
   tireSize: 1
   springConstant: 700
-  damperConstant: 200
+  damperConstant: 722
 --- !u!1001 &675311945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1082,8 +1082,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834226445}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.100275815, y: 0.7025497, z: -0.10103774, w: 0.6972518}
-  m_LocalPosition: {x: -5.719836, y: 3.01, z: 0.04329715}
+  m_LocalRotation: {x: 0.06795478, y: 0.7831624, z: -0.08696813, w: 0.61194396}
+  m_LocalPosition: {x: -5.418828, y: 5.7491145, z: 1.8823164}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1519,7 +1519,7 @@ MonoBehaviour:
   playerObject: {fileID: 1338340474}
   tireSize: 1
   springConstant: 700
-  damperConstant: 200
+  damperConstant: 722
 --- !u!1 &1307713334 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2483265924154126176, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
@@ -1576,8 +1576,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338340474}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.70977795, z: -0, w: 0.7044255}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.12189658, y: 0.7971681, z: 0.16237853, w: 0.5685925}
+  m_LocalPosition: {x: 0, y: 3.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1588,7 +1588,7 @@ Transform:
   - {fileID: 1260647745}
   - {fileID: 97692722}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 90.434, z: 0}
+  m_LocalEulerAnglesHint: {x: -6.908, y: 107.63, z: 22.443}
 --- !u!54 &1338340476
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1663,7 +1663,7 @@ MonoBehaviour:
   playerObject: {fileID: 1338340474}
   tireSize: 1
   springConstant: 700
-  damperConstant: 200
+  damperConstant: 722
 --- !u!1001 &1546984562
 PrefabInstance:
   m_ObjectHideFlags: 0
