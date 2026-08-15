@@ -150,6 +150,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 60, y: 0.5946574, z: 10}
   m_Center: {x: -30, y: 0.2973287, z: 5}
+--- !u!1 &73861682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2483265924154126176, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+  m_PrefabInstance: {fileID: 423908144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &73861683 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+  m_PrefabInstance: {fileID: 423908144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &73861684
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73861682}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 60, y: 0.5946574, z: 10}
+  m_Center: {x: -30, y: 0.2973287, z: 5}
 --- !u!1 &97692721
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,8 +191,9 @@ GameObject:
   m_Component:
   - component: {fileID: 97692722}
   - component: {fileID: 97692723}
+  - component: {fileID: 97692725}
   m_Layer: 0
-  m_Name: TirePoint (3)
+  m_Name: TirePoint (RB)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,8 +207,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97692721}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.875, y: 0.55, z: -1.32}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.81900024, y: 0.36000013, z: -1.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -189,15 +221,37 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97692721}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b3e26bb65a76f942844618eacf99fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TireStabilizer
   playerObject: {fileID: 1338340474}
-  tireSize: 1
-  springConstant: 700
-  damperConstant: 722
+  tireRaySize: 1
+  tireSize: 0.5
+  springConstant: 515
+  damperConstant: 291
+--- !u!135 &97692725
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97692721}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.32
+  m_Center: {x: 0, y: -0.03, z: 0}
 --- !u!1 &174470008 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2483265924154126176, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
@@ -379,8 +433,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06795478, y: 0.7831624, z: -0.08696813, w: 0.61194396}
-  m_LocalPosition: {x: -5.418828, y: 5.7491145, z: 1.8823164}
+  m_LocalRotation: {x: 0.12767087, y: 0.4377845, z: -0.0629603, w: 0.88773924}
+  m_LocalPosition: {x: -1.4852883, y: 10.388005, z: -3.6533408}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -620,6 +674,82 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &423908144
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1817531385}
+    m_Modifications:
+    - target: {fileID: 2483265924154126176, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_Name
+      value: Road_Straight_Long (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2483265924154126176, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5657
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5657
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5657
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 22.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -50.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9702883
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.06455105
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.17702919
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.15177156
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -10.312
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 19.224
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 16.029
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2483265924154126176, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 73861684}
+  m_SourcePrefab: {fileID: 100100000, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
 --- !u!1 &490537112 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2483265924154126176, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
@@ -762,7 +892,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -780,8 +910,9 @@ GameObject:
   m_Component:
   - component: {fileID: 605699059}
   - component: {fileID: 605699060}
+  - component: {fileID: 605699062}
   m_Layer: 0
-  m_Name: TirePoint
+  m_Name: TirePoint (RF)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -795,8 +926,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605699058}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.875, y: 0.55, z: 1.32}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.81900024, y: 0.36000013, z: 1.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -809,15 +940,37 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605699058}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b3e26bb65a76f942844618eacf99fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TireStabilizer
   playerObject: {fileID: 1338340474}
-  tireSize: 1
-  springConstant: 700
-  damperConstant: 722
+  tireRaySize: 1
+  tireSize: 0.5
+  springConstant: 515
+  damperConstant: 291
+--- !u!135 &605699062
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605699058}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.32
+  m_Center: {x: 0, y: -0.03, z: 0}
 --- !u!1001 &675311945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -969,7 +1122,7 @@ Transform:
   m_GameObject: {fileID: 762203432}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39.36181, y: -0, z: 16.04156}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1082,8 +1235,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834226445}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06795478, y: 0.7831624, z: -0.08696813, w: 0.61194396}
-  m_LocalPosition: {x: -5.418828, y: 5.7491145, z: 1.8823164}
+  m_LocalRotation: {x: 0.12767087, y: 0.4377845, z: -0.0629603, w: 0.88773924}
+  m_LocalPosition: {x: -1.4852883, y: 10.388005, z: -3.6533408}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1482,8 +1635,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1260647745}
   - component: {fileID: 1260647746}
+  - component: {fileID: 1260647748}
   m_Layer: 0
-  m_Name: TirePoint (2)
+  m_Name: TirePoint (LB)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1497,8 +1651,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260647744}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.875, y: 0.55, z: -1.32}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.8220005, y: 0.36000013, z: -1.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1511,15 +1665,37 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260647744}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b3e26bb65a76f942844618eacf99fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TireStabilizer
   playerObject: {fileID: 1338340474}
-  tireSize: 1
-  springConstant: 700
-  damperConstant: 722
+  tireRaySize: 1
+  tireSize: 0.5
+  springConstant: 515
+  damperConstant: 291
+--- !u!135 &1260647748
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260647744}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.32
+  m_Center: {x: 0, y: -0.03, z: 0}
 --- !u!1 &1307713334 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2483265924154126176, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
@@ -1560,9 +1736,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1338340475}
-  - component: {fileID: 1338340476}
+  - component: {fileID: 1338340477}
+  - component: {fileID: 1338340479}
+  - component: {fileID: 1338340478}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1576,20 +1754,44 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338340474}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12189658, y: 0.7971681, z: 0.16237853, w: 0.5685925}
-  m_LocalPosition: {x: 0, y: 3.27, z: 0}
+  m_LocalRotation: {x: 0, y: 0.4422886, z: 0, w: 0.89687276}
+  m_LocalPosition: {x: 3.0526922, y: 7.378006, z: -0.17122498}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1035210776}
   - {fileID: 544757273}
   - {fileID: 605699059}
+  - {fileID: 97692722}
   - {fileID: 1443468330}
   - {fileID: 1260647745}
-  - {fileID: 97692722}
+  - {fileID: 2132234315}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -6.908, y: 107.63, z: 22.443}
---- !u!54 &1338340476
+  m_LocalEulerAnglesHint: {x: 0, y: 52.5, z: 0}
+--- !u!114 &1338340477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338340474}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 425cf9485b578e84fa47ba45d0b0c466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarPosition
+  tireRF: {fileID: 605699058}
+  tireRB: {fileID: 97692721}
+  tireLF: {fileID: 1443468329}
+  tireLB: {fileID: 1260647744}
+  tireInfos: []
+  tireRaySize: 2
+  springConstant: 100
+  damperConstant: 10
+  totalBufferTime: 0.005
+  curBufferTime: 0
+  tireSizeOffset: 0.495
+--- !u!54 &1338340478
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1597,7 +1799,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338340474}
   serializedVersion: 5
-  m_Mass: 100
+  m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1614,8 +1816,30 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 1
+--- !u!114 &1338340479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338340474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb84604cb2139dd45bbc4839a3ee8acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarMain
+  tireRF: {fileID: 605699058}
+  tireRB: {fileID: 97692721}
+  tireLF: {fileID: 1443468329}
+  tireLB: {fileID: 1260647744}
+  rayStart: {fileID: 2132234314}
+  tireInfos: []
+  tireRaySize: 1.13
+  tireSize: 0.71
+  springConstant: 100
+  damperConstant: 30
 --- !u!1 &1443468329
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,8 +1850,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1443468330}
   - component: {fileID: 1443468331}
+  - component: {fileID: 1443468333}
   m_Layer: 0
-  m_Name: TirePoint (1)
+  m_Name: TirePoint (LF)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1641,8 +1866,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443468329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.875, y: 0.55, z: 1.32}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.8220005, y: 0.36000013, z: 1.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1655,15 +1880,37 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443468329}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b3e26bb65a76f942844618eacf99fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TireStabilizer
   playerObject: {fileID: 1338340474}
-  tireSize: 1
-  springConstant: 700
-  damperConstant: 722
+  tireRaySize: 1
+  tireSize: 0.5
+  springConstant: 515
+  damperConstant: 291
+--- !u!135 &1443468333
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443468329}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.32
+  m_Center: {x: 0, y: -0.03, z: 0}
 --- !u!1001 &1546984562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2236,6 +2483,82 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 829090632}
   m_SourcePrefab: {fileID: 100100000, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+--- !u!1001 &1802807192
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1817531385}
+    m_Modifications:
+    - target: {fileID: 2483265924154126176, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_Name
+      value: Road_Straight_Long (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2483265924154126176, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5657
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5657
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5657
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -19.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9702883
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.06455105
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.17702919
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.15177156
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -10.312
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 19.224
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 16.029
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2483265924154126176, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1906477201}
+  m_SourcePrefab: {fileID: 100100000, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
 --- !u!1001 &1812918808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2330,6 +2653,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1607243176}
+  - {fileID: 1906477200}
+  - {fileID: 73861683}
   - {fileID: 1347457}
   - {fileID: 490537113}
   - {fileID: 829090631}
@@ -2346,6 +2671,37 @@ Transform:
   - {fileID: 961565411}
   m_Father: {fileID: 282357698}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1906477199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2483265924154126176, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+  m_PrefabInstance: {fileID: 1802807192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1906477200 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8592796119332524704, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+  m_PrefabInstance: {fileID: 1802807192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1906477201
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906477199}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 60, y: 0.5946574, z: 10}
+  m_Center: {x: -30, y: 0.2973287, z: 5}
 --- !u!1001 &1954469655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2536,6 +2892,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1658233698}
   m_SourcePrefab: {fileID: 100100000, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+--- !u!1 &2132234314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2132234315}
+  m_Layer: 0
+  m_Name: RayStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2132234315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132234314}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.728, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1338340475}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
