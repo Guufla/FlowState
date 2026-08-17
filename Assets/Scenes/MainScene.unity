@@ -730,8 +730,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1902136, y: 0, z: 0, w: 0.98174274}
-  m_LocalPosition: {x: 0, y: 2.78, z: -4.96}
+  m_LocalRotation: {x: 0.20915079, y: 0, z: 0, w: 0.97788346}
+  m_LocalPosition: {x: 0, y: 2.56, z: -4.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1047,6 +1047,51 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 73861684}
   m_SourcePrefab: {fileID: 100100000, guid: c295fa49f9e6e43979bfa67f6283bafd, type: 3}
+--- !u!1 &440206542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 440206544}
+  - component: {fileID: 440206543}
+  m_Layer: 0
+  m_Name: StateManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &440206543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440206542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6811aa5c32d6af64ca72cd0d36d43d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarStateMachine
+  inputManager: {fileID: 925445589}
+--- !u!4 &440206544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440206542}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 663.3644, y: 0, z: 335.67163}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &489913570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1962,8 +2007,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834226445}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1902136, y: 0, z: 0, w: 0.98174274}
-  m_LocalPosition: {x: 0, y: 2.78, z: -4.96}
+  m_LocalRotation: {x: 0.20915079, y: 0, z: 0, w: 0.97788346}
+  m_LocalPosition: {x: 0, y: 2.56, z: -4.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2024,11 +2069,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625c14eee3ad46c99df7c7c891ef668a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineThirdPersonFollow
-  Damping: {x: 0.15, y: 0, z: 0.38}
-  ShoulderOffset: {x: 0, y: 2.78, z: -1.58}
+  Damping: {x: 0.48, y: 0, z: 0.6}
+  ShoulderOffset: {x: 0, y: 2.56, z: -2.13}
   VerticalArmLength: 0
   CameraSide: 0
-  CameraDistance: 3.38
+  CameraDistance: 2.62
   AvoidObstacles:
     Enabled: 0
     CollisionFilter:
@@ -2051,7 +2096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotationComposer
   Composition:
-    ScreenPosition: {x: 0, y: 0.08}
+    ScreenPosition: {x: 0, y: 0.03}
     DeadZone:
       Enabled: 0
       Size: {x: 0.03, y: 0.04}
@@ -2061,11 +2106,11 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0.23, z: 0}
-  Damping: {x: 0.55, y: 0}
+  Damping: {x: 0.6, y: 0.54}
   Lookahead:
     Enabled: 0
-    Time: 0.045
-    Smoothing: 8.6
+    Time: 0.404
+    Smoothing: 3.3
     IgnoreY: 1
 --- !u!1001 &856390717
 PrefabInstance:
@@ -2673,7 +2718,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8224879670296638891, guid: 61c411df9959dc3418a17c8daf75ad7e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2089208022}
   m_SourcePrefab: {fileID: 100100000, guid: 61c411df9959dc3418a17c8daf75ad7e, type: 3}
 --- !u!1001 &1224471649
 PrefabInstance:
@@ -2974,6 +3022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb84604cb2139dd45bbc4839a3ee8acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarMain
+  stateMachine: {fileID: 440206543}
   tireRF: {fileID: 605699058}
   tireRB: {fileID: 97692721}
   tireLF: {fileID: 1443468329}
@@ -2981,13 +3030,15 @@ MonoBehaviour:
   rayStart: {fileID: 2132234314}
   tireInfos: []
   tireRaySize: 1.13
-  tireSize: 0.71
+  tireSize: 0.57
   springConstant: 700
   damperConstant: 30
   inputManager: {fileID: 925445589}
   maxSpeed: 20
   groundDrag: 3
-  strSensitvity: 8
+  strSensitvity: 15
+  strSpeed: 5
+  acceleration: 5
   curSpeed: 0
   debugTurn: 0
   debugMove: 0
@@ -4466,6 +4517,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 60, y: 0.5946574, z: 10}
   m_Center: {x: -30, y: 0.2973287, z: 5}
+--- !u!1 &2089208019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8224879670296638891, guid: 61c411df9959dc3418a17c8daf75ad7e, type: 3}
+  m_PrefabInstance: {fileID: 1165455017}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2089208022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089208019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b979a15960a00b348a98fbf5ddd049b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarVisuals
+  movementScript: {fileID: 1338340479}
+  maxTrnAngle: 30
 --- !u!1 &2132234314
 GameObject:
   m_ObjectHideFlags: 0
@@ -4512,3 +4582,4 @@ SceneRoots:
   - {fileID: 834226446}
   - {fileID: 600063200}
   - {fileID: 925445591}
+  - {fileID: 440206544}

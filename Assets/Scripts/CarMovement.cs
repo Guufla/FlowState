@@ -8,7 +8,8 @@ using UnityEngine;
 public class CarMovement : MonoBehaviour
 {
 
-    [Header("Tire Stabilizer References")]
+    [Header("References")]
+    [SerializeField] private CarStateMachine stateMachine;
     
     [SerializeField] private GameObject tireRF; // Right Front
     [SerializeField] private GameObject tireRB; // Right Back
@@ -51,6 +52,8 @@ public class CarMovement : MonoBehaviour
     [SerializeField] private float maxSpeed = 3f;
     [SerializeField] private float groundDrag;
     [SerializeField] private float strSensitvity; // Steering sensitivity
+    [SerializeField] private float strSpeed;      // Steering sensitivity
+    [SerializeField] private float acceleration;
     private Vector3 groundNormal;
     
     private float targetSpeed = 0f;
@@ -58,7 +61,7 @@ public class CarMovement : MonoBehaviour
     
     private Vector3 moveDirection;
     
-    private bool isGrounded;
+    private float turnAmount = 0f;
     
     public bool debugTurn;
     public bool debugMove;
@@ -78,6 +81,8 @@ public class CarMovement : MonoBehaviour
     void Update()
     {
         GetInput();
+        
+        //Debug.Log(stateMachine.state.ToString());
     }
 
     void FixedUpdate()
@@ -108,11 +113,11 @@ public class CarMovement : MonoBehaviour
         }
     }
     
-    #region Movement
+    #region Basic Movement
     // movement code goes here
     void ApplyDrag()
     {
-        if(isGrounded)
+        if(stateMachine.isGrounded)
         {
             rigidbody.linearDamping = groundDrag;
         }
@@ -133,7 +138,7 @@ public class CarMovement : MonoBehaviour
             targetSpeed = 0f;
         }
         
-        if(isGrounded)
+        if(stateMachine.isGrounded)
         {
             Vector3 targetForward = targetFinalRotation * Vector3.forward;
             float forwardSpeed = Vector3.Dot(rigidbody.linearVelocity,targetForward);
@@ -144,16 +149,44 @@ public class CarMovement : MonoBehaviour
             
             Debug.DrawRay(rayStart.transform.position, moveDirection.normalized * 10f, Color.red);
             
-            rigidbody.AddForce(moveDirection.normalized * curSpeed * 10f,ForceMode.Force);
+            if(curSpeed >= 0)
+            {
+                rigidbody.AddForce(moveDirection.normalized * curSpeed * acceleration,ForceMode.Force);
+            }
+            else
+            {
+                rigidbody.AddForce(moveDirection.normalized * (maxSpeed - curSpeed) * (acceleration/1.5f),ForceMode.Force);
+            }
+            
         }
     }
     void PlayerRotation()
     {
-        float turnAmount = 0f;
 
-        if (curSpeed > 0.01f || debugTurn)
+        // NEED TO CHANGE THESE TO ALL BE SLIGHTLY DIFFERENT LATER ON
+        if (stateMachine.state == CarState.driving || debugTurn)
         {
-            turnAmount = strSensitvity * trnValue * 100f * Time.fixedDeltaTime;
+            turnAmount = Mathf.Lerp(turnAmount,strSensitvity * trnValue, Time.fixedDeltaTime * strSpeed);
+        }
+        else if (stateMachine.state == CarState.drifting)
+        {
+            turnAmount = Mathf.Lerp(turnAmount,strSensitvity * trnValue, Time.fixedDeltaTime * strSpeed);
+        }
+        else if (stateMachine.state == CarState.spiralMode)
+        {
+            turnAmount = Mathf.Lerp(turnAmount,strSensitvity * trnValue, Time.fixedDeltaTime * strSpeed);
+        }
+        else if(stateMachine.state == CarState.air)
+        {
+            turnAmount = Mathf.Lerp(turnAmount,strSensitvity * trnValue, Time.fixedDeltaTime * strSpeed);
+        }
+        else if(stateMachine.state == CarState.spiralModeAir)
+        {
+            turnAmount = Mathf.Lerp(turnAmount,strSensitvity * trnValue, Time.fixedDeltaTime * strSpeed);
+        }
+        else
+        {
+            turnAmount = Mathf.Lerp(turnAmount,0f, Time.fixedDeltaTime *1.4f);;
         }
 
         Vector3 targetUp = targetInitialRotation * Vector3.up;
@@ -180,7 +213,18 @@ public class CarMovement : MonoBehaviour
     }
     
     
-    #endregion Movement
+    #endregion Basic
+    
+    #region Drift
+    void PlayerDrift()
+    {
+        
+    }
+    
+    
+    #endregion Drift
+    
+    
     
     #region Player Stabilization
     void PlayerStabilization()
@@ -214,7 +258,7 @@ public class CarMovement : MonoBehaviour
             // Build rotation using forward + ground normal as up
             targetInitialRotation = Quaternion.LookRotation(forward, groundNormal);
             
-            isGrounded = true;
+            stateMachine.isGrounded = true;
 
             //transform.rotation = targetRotation;
         }else
@@ -226,11 +270,22 @@ public class CarMovement : MonoBehaviour
             //     targetRotation = Quaternion.LookRotation(flatForward,Vector3.up);
             // }
             
-            isGrounded = false;
+            stateMachine.isGrounded = false;
         }
         
         //transform.rotation = Quaternion.Slerp(transform.rotation,targetInitialRotation,Time.fixedDeltaTime * 5f);
 
     }
     #endregion Player Stabilization
+    
+    #region Public functions
+    public float GetCurrentTurn()
+    {
+        return turnAmount;
+    }   
+    public float GetMaxTurn()
+    {
+        return strSensitvity*2;
+    } 
+    #endregion Public functions
 }

@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
+// OLD SCRIPT DO NOT USE THIS!!!!
+
 [System.Serializable]
 public class tireInfo
 {
