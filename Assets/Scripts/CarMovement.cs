@@ -42,17 +42,17 @@ public class CarMovement : MonoBehaviour
     
     [Header("Input Variables")]
     [SerializeField] InputManager inputManager;
-    private float trnValue;     // Turn value
-    private float trtlValue;    // Throttle value
-    private float brkValue;     // Brake Value
-    private float splValue;     // Special Value
-    private float splTurnValue; // Special Turn Value
+    public float trnValue;     // Turn value
+    public float trtlValue;    // Throttle value
+    public float brkValue;     // Brake Value
+    public float splValue;     // Special Value
+    public float splTurnValue; // Special Turn Value
     
     [Header("Movement Variables")]
     [SerializeField] private float maxSpeed = 3f;
     [SerializeField] private float groundDrag;
     [SerializeField] private float strSensitvity; // Steering sensitivity
-    [SerializeField] private float strSpeed;      // Steering sensitivity
+    [SerializeField] private float strSpeed;      // Steering speed
     [SerializeField] private float acceleration;
     private Vector3 groundNormal;
     
@@ -62,6 +62,12 @@ public class CarMovement : MonoBehaviour
     private Vector3 moveDirection;
     
     private float turnAmount = 0f;
+    
+    
+    [Header("Drifting Variables")]
+    [SerializeField] private float maxDriftSpeed = 3f;
+    [SerializeField] private float strDriftSensitvity; // Steering sensitivity
+    [SerializeField] private float strDriftSpeed;      // Steering speed
     
     public bool debugTurn;
     public bool debugMove;
@@ -77,6 +83,8 @@ public class CarMovement : MonoBehaviour
         
         targetInitialRotation = rigidbody.rotation;
         targetFinalRotation = rigidbody.rotation;
+        
+        targetSpeed = maxSpeed;
     }
     void Update()
     {
@@ -129,13 +137,14 @@ public class CarMovement : MonoBehaviour
     
     void PlayerMovement()
     {
-        if(trtlValue > 0)
+        if(stateMachine.state == CarState.drifting)
         {
-            targetSpeed = maxSpeed;
+            // targetSpeed = maxDriftSpeed;
+            targetSpeed = Mathf.Lerp(targetSpeed,maxDriftSpeed,Time.fixedDeltaTime * 0.5f);
         }
         else
         {
-            targetSpeed = 0f;
+            targetSpeed = Mathf.Lerp(targetSpeed,maxSpeed,Time.fixedDeltaTime * 2f);
         }
         
         if(stateMachine.isGrounded)
@@ -149,9 +158,21 @@ public class CarMovement : MonoBehaviour
             
             Debug.DrawRay(rayStart.transform.position, moveDirection.normalized * 10f, Color.red);
             
-            if(curSpeed >= 0)
+            if(curSpeed >= 0 && stateMachine.state == CarState.braking)
             {
-                rigidbody.AddForce(moveDirection.normalized * curSpeed * acceleration,ForceMode.Force);
+                rigidbody.AddForce(moveDirection.normalized * curSpeed * acceleration * (-brkValue/2f),ForceMode.Force);
+            }
+            else if(curSpeed >= 0 && stateMachine.state == CarState.driving)
+            {
+                rigidbody.AddForce(moveDirection.normalized * curSpeed * acceleration * trtlValue,ForceMode.Force);
+            }
+            else if(curSpeed >= 0 && stateMachine.state == CarState.drifting)
+            {
+                rigidbody.AddForce(moveDirection.normalized * curSpeed * acceleration * trtlValue,ForceMode.Force);
+            }
+            else if(debugMove)
+            {
+                rigidbody.AddForce(moveDirection.normalized * curSpeed * acceleration * trtlValue,ForceMode.Force);
             }
             else
             {
@@ -170,17 +191,9 @@ public class CarMovement : MonoBehaviour
         }
         else if (stateMachine.state == CarState.drifting)
         {
-            turnAmount = Mathf.Lerp(turnAmount,strSensitvity * trnValue, Time.fixedDeltaTime * strSpeed);
-        }
-        else if (stateMachine.state == CarState.spiralMode)
-        {
-            turnAmount = Mathf.Lerp(turnAmount,strSensitvity * trnValue, Time.fixedDeltaTime * strSpeed);
+            turnAmount = Mathf.Lerp(turnAmount,strDriftSensitvity * trnValue, Time.fixedDeltaTime * strDriftSpeed);
         }
         else if(stateMachine.state == CarState.air)
-        {
-            turnAmount = Mathf.Lerp(turnAmount,strSensitvity * trnValue, Time.fixedDeltaTime * strSpeed);
-        }
-        else if(stateMachine.state == CarState.spiralModeAir)
         {
             turnAmount = Mathf.Lerp(turnAmount,strSensitvity * trnValue, Time.fixedDeltaTime * strSpeed);
         }
@@ -193,9 +206,10 @@ public class CarMovement : MonoBehaviour
 
         Quaternion steeringRotation = Quaternion.AngleAxis(turnAmount,targetUp);
 
-        targetFinalRotation = steeringRotation * targetInitialRotation;
+        targetFinalRotation = steeringRotation * targetInitialRotation; 
 
-        Quaternion newRotation = Quaternion.Slerp(rigidbody.rotation,targetFinalRotation,Time.fixedDeltaTime * 5f);
+        //Quaternion newRotation = Quaternion.Slerp(rigidbody.rotation,targetFinalRotation,Time.fixedDeltaTime * 5f);
+        Quaternion newRotation = targetFinalRotation;
 
         rigidbody.MoveRotation(newRotation);
     }
@@ -204,9 +218,9 @@ public class CarMovement : MonoBehaviour
     {
         Vector3 flatVel = rigidbody.linearVelocity;
         
-        if(flatVel.magnitude > maxSpeed)
+        if(flatVel.magnitude > targetSpeed)
         {
-            Vector3 limitedVel = flatVel.normalized * maxSpeed;
+            Vector3 limitedVel = flatVel.normalized * targetSpeed;
             rigidbody.linearVelocity = limitedVel;
         }
     
