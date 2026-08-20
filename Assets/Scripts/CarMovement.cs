@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 
 
@@ -68,6 +69,11 @@ public class CarMovement : MonoBehaviour
     [SerializeField] private float maxDriftSpeed = 3f;
     [SerializeField] private float strDriftSensitvity; // Steering sensitivity
     [SerializeField] private float strDriftSpeed;      // Steering speed
+    
+    [Range(0,1)]
+    [SerializeField] private float minDrift;
+    
+    private float startDriftDir = 0;
     
     public bool debugTurn;
     public bool debugMove;
@@ -183,7 +189,8 @@ public class CarMovement : MonoBehaviour
     }
     void PlayerRotation()
     {
-
+        SetDriftDirection();
+        
         // NEED TO CHANGE THESE TO ALL BE SLIGHTLY DIFFERENT LATER ON
         if (stateMachine.state == CarState.driving || debugTurn)
         {
@@ -191,7 +198,19 @@ public class CarMovement : MonoBehaviour
         }
         else if (stateMachine.state == CarState.drifting)
         {
-            turnAmount = Mathf.Lerp(turnAmount,strDriftSensitvity * trnValue, Time.fixedDeltaTime * strDriftSpeed);
+            if(startDriftDir > 0)
+            {
+                float adjustedTrnValue = Mathf.InverseLerp(-1,1,trnValue);
+                float finalTrnValue = Mathf.Lerp(0.2f,1f, adjustedTrnValue);
+                //float finalTrnValue = Mathf.Clamp(trnValue,0 , 1);
+                turnAmount = Mathf.Lerp(turnAmount,strDriftSensitvity * finalTrnValue, Time.fixedDeltaTime * strDriftSpeed);
+            }
+            else
+            {
+                float adjustedTrnValue = Mathf.InverseLerp(-1,1,trnValue);
+                float finalTrnValue = Mathf.Lerp(1f,0.2f, adjustedTrnValue);
+                turnAmount = Mathf.Lerp(turnAmount,strDriftSensitvity * -finalTrnValue, Time.fixedDeltaTime * strDriftSpeed);
+            }
         }
         else if(stateMachine.state == CarState.air)
         {
@@ -230,9 +249,19 @@ public class CarMovement : MonoBehaviour
     #endregion Basic
     
     #region Drift
-    void PlayerDrift()
+    void SetDriftDirection()
     {
-        
+        if(stateMachine.state == CarState.drifting)
+        {
+            if(startDriftDir == 0 && trnValue != 0)
+            {
+                startDriftDir = trnValue;
+            }
+        }
+        else
+        {
+            startDriftDir = 0;
+        }
     }
     
     
