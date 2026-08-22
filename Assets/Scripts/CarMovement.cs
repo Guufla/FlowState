@@ -12,10 +12,10 @@ public class CarMovement : MonoBehaviour
     [Header("References")]
     [SerializeField] private CarStateMachine stateMachine;
     
-    [SerializeField] private GameObject tireRF; // Right Front
-    [SerializeField] private GameObject tireRB; // Right Back
-    [SerializeField] private GameObject tireLF; // Left Front
-    [SerializeField] private GameObject tireLB; // Left Back
+    [SerializeField] private GameObject tireFR; // Front Right
+    [SerializeField] private GameObject tireFL; // Front Left
+    [SerializeField] private GameObject tireRL; // Rear Left
+    [SerializeField] private GameObject tireRR; // Rear Right
     
     [SerializeField] private GameObject rayStart; 
     
@@ -63,6 +63,13 @@ public class CarMovement : MonoBehaviour
     private Vector3 moveDirection;
     
     private float turnAmount = 0f;
+    
+    [Header("Rotation Variables")]
+    private Vector3 tireHitFR;
+    private Vector3 tireHitFL;
+    private Vector3 tireHitRL;
+    private Vector3 tireHitRR;
+    
     
     
     [Header("Drifting Variables")]
@@ -277,12 +284,9 @@ public class CarMovement : MonoBehaviour
         // This will show a ray that is meant to represent the tire comment this out when its not used
         Debug.DrawRay(rayStart.transform.position, -rayStart.transform.up * tireRaySize, Color.yellow);
         
-        // Does the ray intersect any objects excluding the player layer
-        
-        
-        
         if (Physics.Raycast(rayStart.transform.position, -rayStart.transform.up, out hit, tireRaySize, layerMask))
         {
+            Debug.DrawRay(hit.point,hit.normal * 3f,Color.red);
             Vector3 velocity = rigidbody.linearVelocity;
             Vector3 rayDir = -rayStart.transform.up;
             
@@ -299,7 +303,7 @@ public class CarMovement : MonoBehaviour
             Vector3 forward = Vector3.ProjectOnPlane(transform.forward, groundNormal).normalized;
 
             // Build rotation using forward + ground normal as up
-            targetInitialRotation = Quaternion.LookRotation(forward, groundNormal);
+            targetInitialRotation = Quaternion.Slerp(targetInitialRotation,Quaternion.LookRotation(forward, groundNormal),Time.fixedDeltaTime * 20f);
             
             stateMachine.isGrounded = true;
 
@@ -315,6 +319,10 @@ public class CarMovement : MonoBehaviour
             
             stateMachine.isGrounded = false;
         }
+        
+        
+        
+
         
         //transform.rotation = Quaternion.Slerp(transform.rotation,targetInitialRotation,Time.fixedDeltaTime * 5f);
 
