@@ -12,7 +12,7 @@ public class CarStateMachine : MonoBehaviour
     [Header("State Machine")]
 
     public CarState state { get; private set; }
-    private CarState prevState{ get; set; }
+    public CarState prevState{ get; set; }
 
     public bool isGrounded { get; set; }
     public bool isSpiral { get; set; }
@@ -31,8 +31,9 @@ public class CarStateMachine : MonoBehaviour
         prevState = CarState.idle;
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        prevState = state;
         state = true switch
         {
             var _ when !isGrounded && isSpiral => CarState.spiralModeAir,
