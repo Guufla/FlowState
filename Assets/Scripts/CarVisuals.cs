@@ -4,11 +4,13 @@ public class CarVisuals : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] InputManager inputManager;
-    [SerializeField] CarMovement movementScript;
     [SerializeField] GameObject tireFL;
     [SerializeField] GameObject tireFR;
     [SerializeField] GameObject tireRL;
     [SerializeField] GameObject tireRR;
+    
+    private GameObject playerObject;
+    private CarMovement movementScript;
     
     [Header("Variables")]
     [SerializeField] float maxTrnAngle;
@@ -31,6 +33,14 @@ public class CarVisuals : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(playerObject == null && GameManager.Instance.GetPlayer() != null)
+        {
+            playerObject = GameManager.Instance.GetPlayer();
+            movementScript = playerObject.GetComponent<CarMovement>();
+        }
+
+        if(playerObject == null) return;
+        
         CarModelRotation();
         CarFrontTireRotation();
         

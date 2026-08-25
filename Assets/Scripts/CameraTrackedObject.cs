@@ -1,10 +1,10 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraTrackedObject : MonoBehaviour
 {
 
-    [SerializeField] GameObject playerObject;
     [SerializeField] CarStateMachine stateMachine;
     [Range(0f,20f)]
     [SerializeField] float positionFollow = 20f;
@@ -12,12 +12,21 @@ public class CameraTrackedObject : MonoBehaviour
     [SerializeField] float rotationFollow = 10f;
     [Range(0f,20f)]
     [SerializeField] float airRotationFollow = 10f;
+
+    private GameObject playerObject;
     
     private float trnValue;
+    void Update()
+    {
+        if(playerObject == null  && GameManager.Instance.GetPlayer() != null)
+        {
+            playerObject = GameManager.Instance.GetPlayer();
+        }
+    }
     
     void LateUpdate()
     {
-        
+        if(playerObject == null) return;
         
         if(stateMachine.state == CarState.air || stateMachine.state == CarState.spiralMode)
         {

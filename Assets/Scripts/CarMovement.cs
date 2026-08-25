@@ -6,14 +6,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Splines;
+using FishNet.Connection;
+using FishNet.Object;
 
 
-public class CarMovement : MonoBehaviour
+public class CarMovement : NetworkBehaviour
 {
-
-
+ 
+    [Header("Network Initializer")]
+    private PlayerInitialization playerinitialization;
+    
     [Header("StateMachine")]
-    [SerializeField] private CarStateMachine stateMachine;
+    private CarStateMachine stateMachine;
 
     [Header("Tire Stabilizer Settings")]
     [SerializeField] private GameObject rayStart;
@@ -30,8 +34,7 @@ public class CarMovement : MonoBehaviour
 
 
     [Header("Input Variables")]
-    [SerializeField] InputManager inputManager;
-    
+    private InputManager inputManager;
     private float trnValue;     // Turn value
     private float trtlValue;    // Throttle value
     private float brkValue;     // Brake Value
@@ -39,10 +42,10 @@ public class CarMovement : MonoBehaviour
     private float splTurnValue; // Special Turn Value
 
     [Header("Road Variables")]
-    [SerializeField] private SplineContainer splines;
     [SerializeField] private int maxResolution = 10;
     [SerializeField] private float roadOffsetY;
     
+    private SplineContainer splines;
     private Vector3 carWorldPoint;
     private Spline curSpline;
     private bool isSplineSet;
@@ -91,6 +94,11 @@ public class CarMovement : MonoBehaviour
         targetFinalRotation = rigidbody.rotation;
 
         targetSpeed = maxSpeed;
+        
+        stateMachine = GameManager.Instance.GetStateMachine();
+        inputManager = GameManager.Instance.GetInputManager();
+        splines = GameManager.Instance.GetSplineContainer();
+        playerinitialization = GetComponent<PlayerInitialization>();
     }
 
     void Update()
@@ -132,6 +140,9 @@ public class CarMovement : MonoBehaviour
 
     public void GetInput()
     {
+        if (playerinitialization.isPlayer == false) return;
+        
+        
         trnValue = inputManager.GetTurn();
         trtlValue = inputManager.GetThrottle();
         brkValue = inputManager.Getbrake();

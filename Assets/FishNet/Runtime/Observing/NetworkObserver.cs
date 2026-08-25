@@ -7,6 +7,7 @@ using GameKit.Dependencies.Utilities;
 using System.Collections.Generic;
 using FishNet.Managing;
 using UnityEngine;
+using UnityEditor;
 
 namespace FishNet.Observing
 {
@@ -158,7 +159,7 @@ namespace FishNet.Observing
                     /* Use GetInstanceId to ensure the object is actually
                      * instantiated. If Id is negative, then it's instantiated
                      * and not a reference to the original object. */
-                    if (destroyed && item.GetInstanceID() < 0)
+                    if (destroyed && !EditorUtility.IsPersistent(item))
                         Destroy(item);
                 }
 
