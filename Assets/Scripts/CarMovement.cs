@@ -103,6 +103,8 @@ public class CarMovement : NetworkBehaviour
 
     void Update()
     {
+        if (!IsOwner) return;
+
         GetInput();
 
         //Debug.Log(stateMachine.state.ToString());
@@ -110,6 +112,8 @@ public class CarMovement : NetworkBehaviour
 
     void FixedUpdate()
     {
+        if (!IsOwner) return;
+
         stateMachine.isGrounded = CheckGrounded();
 
         if(stateMachine.isGrounded && !isSplineSet)
@@ -140,7 +144,6 @@ public class CarMovement : NetworkBehaviour
 
     public void GetInput()
     {
-        if (playerinitialization.isPlayer == false) return;
         
         
         trnValue = inputManager.GetTurn();

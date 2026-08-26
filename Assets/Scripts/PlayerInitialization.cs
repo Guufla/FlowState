@@ -11,6 +11,9 @@ public class PlayerInitialization : NetworkBehaviour
     [SerializeField] GameObject NetworkedModelPrefab;
     private GameObject NetworkedModelHandle;
     
+    private Rigidbody rigidbody;
+    private CarMovement carMovement;
+    
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -23,6 +26,13 @@ public class PlayerInitialization : NetworkBehaviour
         else
         {
             isPlayer = false;
+            
+            rigidbody = GetComponent<Rigidbody>();
+            rigidbody.useGravity = false;
+            
+            carMovement = GetComponent<CarMovement>();
+            carMovement.enabled = false;
+            
             NetworkedModelHandle = Instantiate(NetworkedModelPrefab);
             NetworkedModelHandle.GetComponent<NetworkedModel>().SetGameObject(gameObject);
             NetworkedModelHandle.SetActive(true);

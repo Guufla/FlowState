@@ -47,6 +47,11 @@ public class InputManager : MonoBehaviour
         //Debug.Log("Special Value: " + finalValue);
     }
     
+    void OnThrottleKeyboard(InputValue value)
+    {
+        trtlValue = value.Get<float>();
+    }
+    
     void OnSpecialTurn(InputValue value)
     {
         splTurnValue = value.Get<float>();

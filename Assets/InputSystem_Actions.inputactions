@@ -1012,7 +1012,7 @@
             ]
         },
         {
-            "name": "Movement",
+            "name": "Movement(Controller)",
             "id": "a2b7c2ed-ceae-496f-8f7d-f983eda284d6",
             "actions": [
                 {
@@ -1119,6 +1119,35 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "SpecialTurn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Movement(Keyboard)",
+            "id": "11c11586-a410-40f8-8ae7-7498fe04201a",
+            "actions": [
+                {
+                    "name": "ThrottleKeyboard",
+                    "type": "Value",
+                    "id": "96faf23e-6f5b-4275-8c31-6c27e04b6918",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "afee75ab-61e4-478c-9e58-424e1f77a97a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "ThrottleKeyboard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
