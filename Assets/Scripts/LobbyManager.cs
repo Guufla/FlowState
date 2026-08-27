@@ -6,9 +6,17 @@ using System;
 using Unity.Services.Lobbies.Models;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
+using FishNet;
+using System.Threading.Tasks;
+using Unity.Services.Relay.Models;
+using Unity.Services.Relay;
+using FishNet.Managing;
+using FishNet.Transporting.UTP;
+using Unity.Networking.Transport.Relay;
 
 public class LobbyManager : MonoBehaviour
 {
+    [SerializeField] private NetworkedGameManager networkedGameManager;
     [SerializeField] private PanelRenderer panelRenderer;
     
     private Lobby hostLobby; // When they are the host
@@ -23,6 +31,7 @@ public class LobbyManager : MonoBehaviour
     
     private Button startLobby;
     private Button joinLobby;
+    private Button startGame;
     
     private Label lobbyNameLabel;
     private Label lobbyCodeLabel;
@@ -31,6 +40,8 @@ public class LobbyManager : MonoBehaviour
     public bool CheckLobbies;
     
     private float lobbyUpdateTimer;
+    
+    private string relayCode;
     
     private void OnEnable()
     {
@@ -52,6 +63,7 @@ public class LobbyManager : MonoBehaviour
 
         startLobby = root.Q<Button>("LobbyStartButton");
         joinLobby = root.Q<Button>("LobbyJoinButton");
+        startGame = root.Q<Button>("StartGame");
         
         lobbyNameLabel = root.Q<Label>("LobbyName");
         lobbyCodeLabel = root.Q<Label>("LobbyCode");
@@ -59,6 +71,7 @@ public class LobbyManager : MonoBehaviour
 
         startLobby.clicked += CreateLobby;
         joinLobby.clicked += JoinLobbyHelper;
+        startGame.clicked += StartGame;
     }
 
     private async void Start()
@@ -76,6 +89,11 @@ public class LobbyManager : MonoBehaviour
     {
         try
         {
+            relayCode = await StartHostWithRelay();
+
+            Debug.Log("Relay created: " + relayCode);
+            
+            
             String finalName = "lobbyName";
             
             if(!string.IsNullOrWhiteSpace(lobbyName.value))
@@ -87,18 +105,29 @@ public class LobbyManager : MonoBehaviour
             CreateLobbyOptions createLobbyOptions = new CreateLobbyOptions 
             {
                 IsPrivate = false,
-                Player = GetPlayer()
+                Player = GetPlayer(),
+                
+                Data = new Dictionary<string, DataObject>
+                {
+                    {
+                        "RelayJoinCode",
+                        new DataObject(
+                            DataObject.VisibilityOptions.Member,
+                            relayCode
+                        )
+                    }
+                }
             };
             
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(finalName,maxPlayers,createLobbyOptions);
             
+            
             hostLobby = lobby;
             currentLobby = lobby;
+
             
             lobbyNameLabel.text = "Lobby Name: " + hostLobby.Name;
             lobbyCodeLabel.text = "Lobby Code: " + hostLobby.LobbyCode;
-            
-            
             
             Debug.Log("Created Lobby!! + " + lobby.Name + " " + lobby.MaxPlayers);
         }
@@ -132,12 +161,22 @@ public class LobbyManager : MonoBehaviour
             
             Lobby lobby = await LobbyService.Instance.JoinLobbyByCodeAsync(lobbyCode , joinLobbyByCodeOptions);
             
+            relayCode = lobby.Data["RelayJoinCode"].Value;
+            
             lobbyNameLabel.text = "Lobby Name: " + lobby.Name;
             lobbyCodeLabel.text = "Lobby Code: " + lobby.LobbyCode;
             
             currentLobby = lobby;
             
             Debug.Log("Joined Lobby with code" + lobbyCode);
+            
+            relayCode = lobby.Data["RelayJoinCode"].Value;
+
+            Debug.Log("Relay code received from lobby: " + relayCode);
+
+            bool connected = await StartClientWithRelay(relayCode);
+
+            Debug.Log("FishNet client started: " + connected);
         }
         catch (LobbyServiceException e)
         {
@@ -234,6 +273,51 @@ public class LobbyManager : MonoBehaviour
                 await LobbyService.Instance.SendHeartbeatPingAsync(hostLobby.Id);
             }
         }
+    }
+    
+    
+    private void StartGame()
+    {
+        if(hostLobby == null) return;
+        
+        panelRenderer.enabled = false;
+        
+        networkedGameManager.StartGameForEveryone();
+        
+        // PUT GAME STARTED LOGIC HERE
+    }
+    
+    
+    // -------- RELAY SETUP ------------
+    
+    private async Task<string> StartHostWithRelay(int maxConnections = 12)
+    {
+        Allocation allocation = await RelayService.Instance.CreateAllocationAsync(maxConnections);
+        UnityTransport transport =InstanceFinder.NetworkManager.TransportManager.GetTransport<UnityTransport>();
+    
+        transport.SetRelayServerData(AllocationUtils.ToRelayServerData(allocation, "dtls"));
+        
+        string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+        
+        if (InstanceFinder.ServerManager.StartConnection())
+        {
+            InstanceFinder.ClientManager.StartConnection();
+            return joinCode;
+        }
+        return null;
+        
+    }
+    private async Task<bool> StartClientWithRelay(string joinCode)
+    {
+        if (string.IsNullOrWhiteSpace(joinCode)) return false;
+        
+        JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+        UnityTransport transport =InstanceFinder.NetworkManager.TransportManager.GetTransport<UnityTransport>();
+        
+        transport.SetRelayServerData(AllocationUtils.ToRelayServerData(joinAllocation, "dtls"));
+        
+        return InstanceFinder.ClientManager.StartConnection();
+        
     }
     
 }
