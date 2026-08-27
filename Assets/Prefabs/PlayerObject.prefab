@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 1601429655684381736}
   - component: {fileID: 1106489304437514369}
   - component: {fileID: 5290277119065547162}
+  - component: {fileID: 1382544674073197170}
+  - component: {fileID: 2429860338765504966}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Untagged
@@ -202,7 +204,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584139767111152359
+  _initializedTimestamp: -8584137974332746923
 --- !u!114 &5290277119065547162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +251,43 @@ MonoBehaviour:
     X: 0
     Y: 0
     Z: 0
+--- !u!114 &1382544674073197170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679732722753666806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fc75fe87df3974fb0d35a27250d47f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDeath
+  respTimer: 1.5
+  transTimer: 0.5
+--- !u!136 &2429860338765504966
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679732722753666806}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.69
+  m_Height: 4.48
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.83, z: 0}
 --- !u!1 &1136751293339067542
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1209966170656747871
 Transform:
   m_ObjectHideFlags: 0

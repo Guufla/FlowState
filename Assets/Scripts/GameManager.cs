@@ -18,9 +18,11 @@ public class GameManager : MonoBehaviour
     }
     
     [Header("References")]
-    [SerializeField] CarStateMachine carStateMachine;
-    [SerializeField] InputManager inputManager;
-    [SerializeField] SplineContainer splines;
+    [SerializeField] CarStateMachine    carStateMachine;
+    [SerializeField] InputManager       inputManager;
+    [SerializeField] SplineContainer    splines;
+    [SerializeField] CheckPointManager  checkPointManager;
+    [SerializeField] GameObject         carModel;
     
     private GameObject playerObject;
     
@@ -64,5 +66,13 @@ public class GameManager : MonoBehaviour
     public SplineContainer GetSplineContainer()
     {
         return splines;
+    }
+    public CheckPointManager GetCheckPointManager()
+    {
+        return checkPointManager;
+    }
+    public GameObject GetCarModel()
+    {
+        return carModel;
     }
 }
