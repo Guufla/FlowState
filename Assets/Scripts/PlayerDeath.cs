@@ -5,13 +5,11 @@ public class PlayerDeath : MonoBehaviour
     [SerializeField] private float respTimer;
     private float curRespTimer;
     
-    [SerializeField] private float transTimer;
-    private float curTransTimer;
-    
     private CheckPointManager checkPointManager;
     private GameObject carModelObj;
     private Rigidbody rigidbody;
     private CarMovement carMovement;
+    private CarStateMachine carStateMachine;
     
     bool isRespawning = false;
     
@@ -24,6 +22,7 @@ public class PlayerDeath : MonoBehaviour
         carModelObj = GameManager.Instance.GetCarModel();
         rigidbody = GetComponent<Rigidbody>();
         carMovement = GetComponent<CarMovement>();
+        carStateMachine = GameManager.Instance.GetStateMachine();
     }
 
     // Update is called once per frame
@@ -38,18 +37,17 @@ public class PlayerDeath : MonoBehaviour
             carMovement.enabled = false;
             
             curRespTimer -= Time.fixedDeltaTime;
-            curTransTimer = transTimer;
         }
         else if (isRespawning)
         {
-            if(curTransTimer >= 0.1)
+            if(!checkPointManager.isAtCheckpoint())
             {
                 checkPointManager.GotoCheckpoint();
-                curTransTimer -= Time.fixedDeltaTime;
             }
             else
             {
                 isRespawning = false;
+                carStateMachine.isDead = false;
                 carModelObj.SetActive(true);
                 rigidbody.useGravity = true;
                 carMovement.enabled = true;
@@ -62,6 +60,7 @@ public class PlayerDeath : MonoBehaviour
         if(other.tag == "DeathBox" && !isRespawning)
         {
             Debug.Log("IsRespawning");
+            carStateMachine.isDead = true;
             isRespawning = true;
             curRespTimer = respTimer;
         }

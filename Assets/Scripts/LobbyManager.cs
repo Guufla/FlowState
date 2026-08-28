@@ -17,7 +17,9 @@ using Unity.Networking.Transport.Relay;
 public class LobbyManager : MonoBehaviour
 {
     [SerializeField] private NetworkedGameManager networkedGameManager;
-    [SerializeField] private PanelRenderer panelRenderer;
+    [SerializeField] private PanelRenderer lobbyMenuPanel;
+    [SerializeField] private PanelRenderer lobbyJoinPanel;
+    [SerializeField] private PanelRenderer UserNamePanel;
     
     private Lobby hostLobby; // When they are the host
     private Lobby currentLobby; // When they are a member
@@ -29,6 +31,7 @@ public class LobbyManager : MonoBehaviour
     private TextField lobbyName;
     private TextField joinCode;
     
+    private Button setUserName;
     private Button startLobby;
     private Button joinLobby;
     private Button startGame;
@@ -42,36 +45,77 @@ public class LobbyManager : MonoBehaviour
     private float lobbyUpdateTimer;
     
     private string relayCode;
+    private string userNameStr;
+    
+    private LobbyState lobbyState;
     
     private void OnEnable()
     {
-        panelRenderer.RegisterUIReloadCallback(OnUIReload);
+        UserNamePanel.RegisterUIReloadCallback(OnUIReload);
+        lobbyJoinPanel.RegisterUIReloadCallback(OnUIReload);
+        lobbyMenuPanel.RegisterUIReloadCallback(OnUIReload);
     }
 
 
     private void OnDisable()
     {
-        panelRenderer.UnregisterUIReloadCallback(OnUIReload);
+        UserNamePanel.UnregisterUIReloadCallback(OnUIReload);
+        lobbyJoinPanel.UnregisterUIReloadCallback(OnUIReload);
+        lobbyMenuPanel.UnregisterUIReloadCallback(OnUIReload);
     }
 
 
     private void OnUIReload(PanelRenderer renderer, VisualElement root)
     {
-        userName = root.Q<TextField>("UserName");
-        lobbyName = root.Q<TextField>("LobbyName");
-        joinCode = root.Q<TextField>("JoinCode");
-
-        startLobby = root.Q<Button>("LobbyStartButton");
-        joinLobby = root.Q<Button>("LobbyJoinButton");
-        startGame = root.Q<Button>("StartGame");
+        if(renderer == UserNamePanel)
+        {
+            userName = root.Q<TextField>("UserName");
+            setUserName = root.Q<Button>("UserNameButton");
+            setUserName.clicked += SetUserName;
+        }
         
-        lobbyNameLabel = root.Q<Label>("LobbyName");
-        lobbyCodeLabel = root.Q<Label>("LobbyCode");
-        lobbyPlayersLabel = root.Q<Label>("LobbyPlayerCount");
+        else if(renderer == lobbyJoinPanel)
+        {
+            lobbyName = root.Q<TextField>("LobbyName");
+            joinCode = root.Q<TextField>("JoinCode");
 
-        startLobby.clicked += CreateLobby;
-        joinLobby.clicked += JoinLobbyHelper;
-        startGame.clicked += StartGame;
+            startLobby = root.Q<Button>("LobbyStartButton");
+            joinLobby = root.Q<Button>("LobbyJoinButton");
+            
+            startLobby.clicked += CreateLobby;
+            joinLobby.clicked += JoinLobbyHelper;
+        }
+        else if(renderer == lobbyMenuPanel)
+        {
+            
+            lobbyNameLabel = root.Q<Label>("LobbyName");
+            lobbyCodeLabel = root.Q<Label>("LobbyCode");
+            lobbyPlayersLabel = root.Q<Label>("LobbyPlayerCount");
+            
+            startGame = root.Q<Button>("StartGame");
+            
+            startGame.clicked += StartGame;
+        }
+    }
+    
+    private void ChangeLobbyState(LobbyState newState)
+    {
+        lobbyState = newState;
+
+        UserNamePanel.enabled =
+            newState == LobbyState.UserName;
+
+        lobbyJoinPanel.enabled =
+            newState == LobbyState.Join;
+
+        lobbyMenuPanel.enabled =
+            newState == LobbyState.Lobby;
+    }
+        
+    private void SetUserName()
+    {
+        userNameStr = userName.value;
+        ChangeLobbyState(LobbyState.Join);
     }
 
     private async void Start()
@@ -83,6 +127,10 @@ public class LobbyManager : MonoBehaviour
             Debug.Log("Signed in" + AuthenticationService.Instance.PlayerId);
         };
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        
+        UserNamePanel.enabled = true;
+        
+        ChangeLobbyState(LobbyState.UserName);
     }
     
     private async void CreateLobby()
@@ -128,6 +176,8 @@ public class LobbyManager : MonoBehaviour
             
             lobbyNameLabel.text = "Lobby Name: " + hostLobby.Name;
             lobbyCodeLabel.text = "Lobby Code: " + hostLobby.LobbyCode;
+            
+            ChangeLobbyState(LobbyState.Lobby);
             
             Debug.Log("Created Lobby!! + " + lobby.Name + " " + lobby.MaxPlayers);
         }
@@ -175,7 +225,8 @@ public class LobbyManager : MonoBehaviour
             Debug.Log("Relay code received from lobby: " + relayCode);
 
             bool connected = await StartClientWithRelay(relayCode);
-
+            ChangeLobbyState(LobbyState.Lobby);
+            
             Debug.Log("FishNet client started: " + connected);
         }
         catch (LobbyServiceException e)
@@ -280,7 +331,7 @@ public class LobbyManager : MonoBehaviour
     {
         if(hostLobby == null) return;
         
-        panelRenderer.enabled = false;
+        lobbyMenuPanel.enabled = false;
         
         networkedGameManager.StartGameForEveryone();
         

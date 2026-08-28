@@ -8,5 +8,6 @@ public enum CarState
     drifting,
     spiralMode,
     spiralModeAir,
-    air
+    air,
+    dead
 }

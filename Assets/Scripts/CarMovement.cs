@@ -116,7 +116,7 @@ public class CarMovement : NetworkBehaviour
 
         stateMachine.isGrounded = CheckGrounded();
 
-        if(stateMachine.isGrounded && !isSplineSet)
+        if(stateMachine.isGrounded)
         {
             SetCurrentSpline();
         }
@@ -129,7 +129,6 @@ public class CarMovement : NetworkBehaviour
         }
         else
         {
-            isSplineSet = false;
             PlayerAirStabilization();
         }
         PlayerMovement();
@@ -210,8 +209,6 @@ public class CarMovement : NetworkBehaviour
         }
 
         curSpline = splines[ClosestSpline];
-
-        isSplineSet = true;
     }
 
     #endregion Spline Setup
@@ -221,7 +218,8 @@ public class CarMovement : NetworkBehaviour
     void SplineCoordinates()
     {
         if(splines == null) return;
-        if(!isSplineSet) return;
+        
+        if(curSpline == null)return;
 
         // if(stateMachine.prevState == CarState.air || stateMachine.prevState == CarState.spiralModeAir)
         // {
@@ -459,6 +457,11 @@ public class CarMovement : NetworkBehaviour
     public float GetMaxTurn()
     {
         return strSensitvity*2;
+    }
+    
+    public void SetTargetInitialRotation(Quaternion setRotation)
+    {
+        targetInitialRotation = setRotation;
     }
 
     #endregion Public Functions
