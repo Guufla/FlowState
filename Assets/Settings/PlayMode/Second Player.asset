@@ -61,5 +61,5 @@ MonoBehaviour:
           RoleMask: 1
           PlayerInstanceIndex: 1
           StreamLogsToMainEditor: 0
-          LogsColor: {r: 0.3915094, g: 0.39231822, b: 1, a: 1}
+          LogsColor: {r: 0.00000011920929, g: 0, b: 1, a: 1}
         m_Decorators: []

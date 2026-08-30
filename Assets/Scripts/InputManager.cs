@@ -10,6 +10,8 @@ public class InputManager : MonoBehaviour
     public float trnValue;     // Turn value
     private float trtlValue;    // Throttle value
     private float brkValue;     // Brake Value
+    
+    private float dftValue;     // Brake Value
     private float splValue;     // Special Value
     private float splTurnValue; // Special Turn Value
     
@@ -43,6 +45,11 @@ public class InputManager : MonoBehaviour
     {
         brkValue = value.Get<float>();
         //Debug.Log("Brake Value: " + finalValue);
+    }
+    
+    void OnDrift(InputValue value)
+    {
+        dftValue = value.Get<float>();
     }
     void OnSpecial(InputValue value)
     {
@@ -79,6 +86,10 @@ public class InputManager : MonoBehaviour
     {
         trtlValue = value.Get<float>();
     }
+    void OnDriftKeyboard(InputValue value)
+    {
+        dftValue = value.Get<float>();
+    }
     
     public float GetTurn()
     {
@@ -88,9 +99,14 @@ public class InputManager : MonoBehaviour
     {
         return trtlValue;
     }
-    public float Getbrake()
+    public float GetBrake()
     {
         return brkValue;
+    }
+    
+    public float GetDrift()
+    {
+        return dftValue;
     }
     public float GetSpecial()
     {

@@ -40,7 +40,7 @@ public class PlayerDeath : MonoBehaviour
         }
         else if (isRespawning)
         {
-            if(!checkPointManager.isAtCheckpoint())
+            if(!checkPointManager.IsAtCheckpoint())
             {
                 checkPointManager.GotoCheckpoint();
             }
