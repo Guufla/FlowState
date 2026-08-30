@@ -7,11 +7,16 @@ public class InputManager : MonoBehaviour
 
     
     [Header("InputValues")]
-    private float trnValue;     // Turn value
+    public float trnValue;     // Turn value
     private float trtlValue;    // Throttle value
     private float brkValue;     // Brake Value
+    
+    private float dftValue;     // Brake Value
     private float splValue;     // Special Value
     private float splTurnValue; // Special Turn Value
+    
+    private float trnLeftKeyboard;
+    private float trnRightKeyboard;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,21 +46,49 @@ public class InputManager : MonoBehaviour
         brkValue = value.Get<float>();
         //Debug.Log("Brake Value: " + finalValue);
     }
+    
+    void OnDrift(InputValue value)
+    {
+        dftValue = value.Get<float>();
+    }
     void OnSpecial(InputValue value)
     {
         splValue = value.Get<float>();
         //Debug.Log("Special Value: " + finalValue);
     }
     
-    void OnThrottleKeyboard(InputValue value)
-    {
-        trtlValue = value.Get<float>();
-    }
-    
     void OnSpecialTurn(InputValue value)
     {
         splTurnValue = value.Get<float>();
         //Debug.Log("Special Turn Value: " + finalValue);
+    }
+    
+    
+    void OnTurnLeftKeyboard(InputValue value)
+    {
+        trnLeftKeyboard = value.Get<float>();
+        trnValue = trnRightKeyboard - trnLeftKeyboard;
+    }
+    
+    // Keyboard D key
+    void OnTurnRightKeyboard(InputValue value)
+    {
+        trnRightKeyboard = value.Get<float>();
+        trnValue = trnRightKeyboard - trnLeftKeyboard;
+    }
+    
+    void OnBrakeKeyboard(InputValue value)
+    {
+        brkValue = value.Get<float>();
+    }
+    
+    void OnThrottleKeyboard(InputValue value)
+    {
+        trtlValue = value.Get<float>();
+    }
+    void OnDriftKeyboard(InputValue value)
+    {
+        dftValue = value.Get<float>();
     }
     
     public float GetTurn()
@@ -66,9 +99,14 @@ public class InputManager : MonoBehaviour
     {
         return trtlValue;
     }
-    public float Getbrake()
+    public float GetBrake()
     {
         return brkValue;
+    }
+    
+    public float GetDrift()
+    {
+        return dftValue;
     }
     public float GetSpecial()
     {

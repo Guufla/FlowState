@@ -38,6 +38,7 @@ public class CarMovement : NetworkBehaviour
     private float trnValue;     // Turn value
     private float trtlValue;    // Throttle value
     private float brkValue;     // Brake Value
+    private float dftValue;
     private float splValue;     // Special Value
     private float splTurnValue; // Special Turn Value
 
@@ -61,7 +62,7 @@ public class CarMovement : NetworkBehaviour
     private Vector3 moveDirection;
     private float targetSpeed = 0f;
     private float turnAmount = 0f;
-    private float curSpeed; // Make this public to see how fast the player is going
+    public float curSpeed; // Make this public to see how fast the player is going
     
     [Header("Drifting Variables")]
     [SerializeField] private float maxDriftSpeed = 3f;
@@ -113,10 +114,21 @@ public class CarMovement : NetworkBehaviour
     void FixedUpdate()
     {
         if (!IsOwner) return;
+        
+        if(!GameManager.Instance.GetGameStart())
+        {
+            rigidbody.useGravity = false;
+            rigidbody.linearVelocity = new Vector3(0, 0, 0);
+            rigidbody.angularVelocity = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            rigidbody.useGravity = true;
+        }
 
         stateMachine.isGrounded = CheckGrounded();
 
-        if(stateMachine.isGrounded && !isSplineSet)
+        if(stateMachine.isGrounded)
         {
             SetCurrentSpline();
         }
@@ -129,7 +141,6 @@ public class CarMovement : NetworkBehaviour
         }
         else
         {
-            isSplineSet = false;
             PlayerAirStabilization();
         }
         PlayerMovement();
@@ -144,11 +155,12 @@ public class CarMovement : NetworkBehaviour
 
     public void GetInput()
     {
-        
+        if (!GameManager.Instance.GetGameStart()) return;
         
         trnValue = inputManager.GetTurn();
         trtlValue = inputManager.GetThrottle();
-        brkValue = inputManager.Getbrake();
+        brkValue = inputManager.GetBrake();
+        dftValue = inputManager.GetDrift();
         splValue = inputManager.GetSpecial();
         splTurnValue = inputManager.GetSpecialTurn();
 
@@ -210,18 +222,17 @@ public class CarMovement : NetworkBehaviour
         }
 
         curSpline = splines[ClosestSpline];
-
-        isSplineSet = true;
     }
 
     #endregion Spline Setup
 
     #region Spline Coordinates And Rotation
-
+    //
     void SplineCoordinates()
     {
         if(splines == null) return;
-        if(!isSplineSet) return;
+        
+        if(curSpline == null)return;
 
         // if(stateMachine.prevState == CarState.air || stateMachine.prevState == CarState.spiralModeAir)
         // {
@@ -281,9 +292,13 @@ public class CarMovement : NetworkBehaviour
         SetDriftDirection();
 
         // NEED TO CHANGE THESE TO ALL BE SLIGHTLY DIFFERENT LATER ON
-        if (stateMachine.state == CarState.driving || debugTurn)
+        if (stateMachine.state == CarState.driving|| debugTurn)
         {
             turnAmount = Mathf.Lerp(turnAmount,strSensitvity * trnValue, Time.fixedDeltaTime * strSpeed);
+        }
+        else if (stateMachine.state == CarState.braking)
+        {
+            turnAmount = Mathf.Lerp(turnAmount,strSensitvity * trnValue * 2f, Time.fixedDeltaTime * strSpeed * 2f);
         }
         else if (stateMachine.state == CarState.drifting)
         {
@@ -399,9 +414,10 @@ public class CarMovement : NetworkBehaviour
 
             Debug.DrawRay(rayStart.transform.position, moveDirection.normalized * 10f, Color.red);
 
-            if(curSpeed >= 0 && stateMachine.state == CarState.braking)
+            if(stateMachine.state == CarState.braking && curSpeed >0.1)
             {
-                rigidbody.AddForce(moveDirection.normalized * curSpeed * acceleration * (-brkValue/2f),ForceMode.Force);
+                moveDirection = targetForward;
+                rigidbody.AddForce(moveDirection.normalized * curSpeed * acceleration * (-brkValue)/2f,ForceMode.Force);
             }
             else if(curSpeed >= 0 && stateMachine.state == CarState.driving)
             {
@@ -459,6 +475,11 @@ public class CarMovement : NetworkBehaviour
     public float GetMaxTurn()
     {
         return strSensitvity*2;
+    }
+    
+    public void SetTargetInitialRotation(Quaternion setRotation)
+    {
+        targetInitialRotation = setRotation;
     }
 
     #endregion Public Functions

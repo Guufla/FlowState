@@ -1038,6 +1038,16 @@
                 {
                     "name": "Brake",
                     "type": "Value",
+                    "id": "44da5c0f-84c8-474c-867e-280917b19708",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "Drift",
+                    "type": "Value",
                     "id": "ed75c281-51db-4f74-9e1d-8946c3a9a84c",
                     "expectedControlType": "Analog",
                     "processors": "",
@@ -1096,7 +1106,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Brake",
+                    "action": "Drift",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1121,6 +1131,17 @@
                     "action": "SpecialTurn",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "333ea5e0-865d-419d-8b85-b1eaca87915b",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Brake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1137,6 +1158,46 @@
                     "interactions": "",
                     "initialStateCheck": true,
                     "priority": 0
+                },
+                {
+                    "name": "TurnLeftKeyboard",
+                    "type": "Value",
+                    "id": "e142eff6-22bd-4076-a02c-91c924c40ab0",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "TurnRightKeyboard",
+                    "type": "Value",
+                    "id": "e060072e-6eb2-43e8-b96d-32345ca0a67f",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "BrakeKeyboard",
+                    "type": "Value",
+                    "id": "6a39c621-9d94-4551-9918-743935a70a42",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "DriftKeyboard",
+                    "type": "Value",
+                    "id": "ed7113c1-9b18-47fa-b3e3-bc3d75f600fa",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -1148,6 +1209,50 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "ThrottleKeyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9220d8b1-5833-4196-acd2-7a187824f316",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnLeftKeyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "460e4515-9c16-4a87-9825-1e743665d53d",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnRightKeyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cd453a77-9143-48eb-bac2-d3d2da61b309",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BrakeKeyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ec6d0ea-1410-4abf-bd8a-940c0b5f90c5",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DriftKeyboard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
