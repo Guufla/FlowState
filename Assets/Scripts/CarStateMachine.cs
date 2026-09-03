@@ -20,6 +20,7 @@ public class CarStateMachine : MonoBehaviour
     public bool isMoving { get; set; }
     public bool isBraking { get; set; }
     public bool isDead { get; set; }
+    public bool isInitialize { get; set; }
 
     // public event Action<CarState> OnStateChanged;
 
@@ -36,6 +37,7 @@ public class CarStateMachine : MonoBehaviour
         prevState = state;
         state = true switch
         {
+            var _ when isInitialize => CarState.initialize, 
             var _ when isDead => CarState.dead,
             var _ when !isGrounded && isSpiral => CarState.spiralModeAir,
             var _ when !isGrounded => CarState.air,

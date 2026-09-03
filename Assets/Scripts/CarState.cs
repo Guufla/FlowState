@@ -9,5 +9,6 @@ public enum CarState
     spiralMode,
     spiralModeAir,
     air,
-    dead
+    dead,
+    initialize
 }
