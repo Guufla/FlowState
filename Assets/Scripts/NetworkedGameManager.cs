@@ -69,6 +69,16 @@ public class NetworkedGameManager : NetworkBehaviour
         playerFinalRanks[playersFinished] = playerName;
         playersFinished++;
     }
+    [ServerRpc(RequireOwnership = false)]
+    public void TeleportPlayerServerRpc(GameObject player, Vector3 position, Quaternion rotation)
+    {
+        Rigidbody rb = player.GetComponent<Rigidbody>();
+
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        Debug.Log($"Teleporting player {player.name} to position {position} with rotation {rotation}");
+        player.transform.SetPositionAndRotation(position, rotation);
+    }
     
     public List<string> GetFinalRanks()
     {

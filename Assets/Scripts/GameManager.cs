@@ -264,18 +264,19 @@ public class GameManager : MonoBehaviour
 
             uiManager.EnableCountdown(true);
 
-            carStateMachine.isDead = true;
+            carStateMachine.isInitialize = true;
+            
+            playerObject.GetComponent<Rigidbody>().useGravity = false;
+            playerObject.GetComponent<Rigidbody>().linearVelocity = new Vector3(0,0,0);
+            playerObject.GetComponent<Rigidbody>().angularVelocity = new Vector3(0,0,0);
+            playerObject.GetComponent<Rigidbody>().position = spawn.position;
+            playerObject.GetComponent<Rigidbody>().rotation = spawn.rotation;
+            playerObject.GetComponent<CarMovement>().enabled = false;
 
-            playerObject
-                .GetComponent<PlayerInitialization>()
-                .TeleportToSpawnServerRpc(
-                    spawn.position,
-                    spawn.rotation
-                );
+            //networkedGameManager.TeleportPlayerServerRpc(playerObject,spawn.position,spawn.rotation);
+            Debug.Log($"Player {playerName} spawned at {spawn.position} with rotation {spawn.rotation}");
 
             playerMovementScript.SetTargetInitialRotation(spawn.rotation);
-
-            carStateMachine.isDead = false;
         }
 
         gameCountdown = 5f;
@@ -296,6 +297,10 @@ public class GameManager : MonoBehaviour
         
         if(gameCountdown <= 0.1f)
         {
+            carStateMachine.isInitialize = false;
+            playerObject.GetComponent<Rigidbody>().useGravity = true;
+            playerObject.GetComponent<CarMovement>().enabled = true;
+            
             isGameStarted = true;
             isGameStarting = false;
             uiManager.EnableCountdown(false);

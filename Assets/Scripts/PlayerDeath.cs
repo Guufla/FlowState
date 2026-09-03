@@ -65,4 +65,14 @@ public class PlayerDeath : MonoBehaviour
             curRespTimer = respTimer;
         }
     }
+    // void OnCollisionEnter(Collision collision)
+    // {
+    //     if(enabled && collision.gameObject.CompareTag("DeathBox") && !isRespawning)
+    //     {
+    //         //Debug.Log("IsRespawning");
+    //         carStateMachine.isDead = true;
+    //         isRespawning = true;
+    //         curRespTimer = respTimer;
+    //     }
+    // }
 }
