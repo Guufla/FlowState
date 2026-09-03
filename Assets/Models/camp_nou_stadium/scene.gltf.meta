@@ -1,0 +1,286 @@
+fileFormatVersion: 2
+guid: 72cd4d0c03756294bacf16c2cf909387
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets\Models\camp_nou_stadium\scene.bin
+    assetPath: Assets\Models\camp_nou_stadium\scene.bin
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_f_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_f_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_f_0_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_f_0_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_f_1_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_f_1_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_f_2_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_f_2_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_f_3_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_f_3_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_f_4_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_f_4_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_f_5_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_f_5_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_f_6_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_f_6_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_f_7_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_f_7_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_f_8_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_f_8_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cnscf2_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cnscf2_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cnscf2_9_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cnscf2_9_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cnscf2_10_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cnscf2_10_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_11_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_11_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_12_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_12_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_13_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_13_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_14_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_14_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_15_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_15_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_16_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_16_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_17_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_17_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_18_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_18_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_19_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_19_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_20_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_20_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_21_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_21_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_22_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_22_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_23_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_23_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_24_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_24_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_25_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_25_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_26_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_26_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_27_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_27_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r1_28_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r1_28_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bs_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bs_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bs_29_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bs_29_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bs_30_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bs_30_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bs_31_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bs_31_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bs_32_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bs_32_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_wt_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_wt_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rt_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rt_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bbs_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bbs_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bbs_33_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bbs_33_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bbs_34_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bbs_34_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bbs_35_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bbs_35_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_r2_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_r2_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_36_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_36_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_37_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_37_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_38_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_38_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_et_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_et_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_39_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_39_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_40_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_40_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_41_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_41_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_fb_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_fb_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bs_42_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bs_42_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bs_43_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bs_43_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bs_44_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bs_44_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bs_45_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bs_45_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bs_46_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bs_46_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_bs_47_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_bs_47_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_48_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_48_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_49_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_49_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_50_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_50_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_51_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_51_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_52_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_52_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_53_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_53_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_54_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_54_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_55_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_55_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_fcb_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_fcb_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_fcb_56_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_fcb_56_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_fcb_57_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_fcb_57_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_fcb_58_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_fcb_58_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_mqc_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_mqc_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_mqc_59_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_mqc_59_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_60_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_60_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_61_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_61_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_62_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_62_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_63_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_63_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_64_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_64_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_65_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_65_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_66_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_66_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rs_67_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rs_67_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_scb_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_scb_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cn_rut_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cn_rut_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cnscf2_68_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cnscf2_68_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\camp_nou_stadium\textures\cnscf2_69_baseColor.jpeg
+    assetPath: Assets\Models\camp_nou_stadium\textures\cnscf2_69_baseColor.jpeg
+  reportItems: []

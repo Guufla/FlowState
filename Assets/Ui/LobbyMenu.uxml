@@ -10,6 +10,8 @@
                     <ui:Label text="Lobby Players (0): " name="LobbyPlayerCount" style="color: rgb(255, 255, 255); -unity-text-align: upper-center; align-items: center; justify-content: flex-start; align-content: auto; align-self: center; font-size: 23px;"/>
                 </ui:VisualElement>
                 <ui:VisualElement name="VisualElement" style="flex-grow: 1; align-self: flex-start; border-top-width: 29px; border-right-width: 29px; border-bottom-width: 29px; border-left-width: 29px; width: 40%;">
+                    <ui:Label text="Select a Car" tabindex="0" style="font-size: 40px; color: rgb(255, 255, 255); -unity-text-align: upper-center;"/>
+                    <ui:RadioButtonGroup label="" choices="Mach 5,Mach 6,Rex Racer,Generic Blue car" value="3" focusable="true" name="SelectCarGroup" style="color: rgb(255, 255, 255);"/>
                     <ui:Button text="Start Game" name="StartGame" style="align-self: center; align-items: auto; width: 129px; height: 49px; border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; background-color: rgb(255, 14, 0); font-size: 20px; -unity-font-style: normal; color: rgb(0, 0, 0);"/>
                 </ui:VisualElement>
             </ui:VisualElement>

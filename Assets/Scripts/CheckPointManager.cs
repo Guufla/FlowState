@@ -83,5 +83,6 @@ public class CheckPointManager : MonoBehaviour
     public void ResetCheckpoints()
     {
         curCheckPointIndex = 0;
+        curCheckPointObject = checkPoints[0];
     }
 }

@@ -59,7 +59,7 @@ public class PlayerDeath : MonoBehaviour
     {
         if(other.tag == "DeathBox" && !isRespawning)
         {
-            Debug.Log("IsRespawning");
+            //Debug.Log("IsRespawning");
             carStateMachine.isDead = true;
             isRespawning = true;
             curRespTimer = respTimer;

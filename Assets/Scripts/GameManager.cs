@@ -4,6 +4,7 @@ using UnityEngine.Splines;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 using FishNet.Demo.AdditiveScenes;
+using FishNet.Object;
 
 
 public class GameManager : MonoBehaviour
@@ -254,18 +255,34 @@ public class GameManager : MonoBehaviour
     {
         if(isGameStarting)
         {
+            Transform spawn = spawnPoints[playerIndex].transform;
+
+            Debug.Log(
+                $"STARTING PLAYER: {playerName} | " +
+                $"Index: {playerIndex} | Spawn: {spawn.name}"
+            );
+
             uiManager.EnableCountdown(true);
+
             carStateMachine.isDead = true;
-            playerObject.transform.position = spawnPoints[playerIndex].transform.position;
-            playerObject.transform.rotation = spawnPoints[playerIndex].transform.rotation;
-            playerMovementScript.SetTargetInitialRotation(spawnPoints[playerIndex].transform.rotation);
+
+            playerObject
+                .GetComponent<PlayerInitialization>()
+                .TeleportToSpawnServerRpc(
+                    spawn.position,
+                    spawn.rotation
+                );
+
+            playerMovementScript.SetTargetInitialRotation(spawn.rotation);
+
             carStateMachine.isDead = false;
         }
 
         gameCountdown = 5f;
-
         this.isGameStarting = isGameStarting;
     }
+    
+
     public void ResetGameStarted()
     {
         isGameStarted = false;

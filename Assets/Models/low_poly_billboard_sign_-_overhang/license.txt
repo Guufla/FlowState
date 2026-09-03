@@ -1,0 +1,11 @@
+Model Information:
+* title:	Low Poly Billboard Sign - Overhang
+* source:	https://sketchfab.com/3d-models/low-poly-billboard-sign-overhang-bbbc335c94724061b5caaed3bb52b7cd
+* author:	JeffK (https://sketchfab.com/jeffkolada)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Low Poly Billboard Sign - Overhang" (https://sketchfab.com/3d-models/low-poly-billboard-sign-overhang-bbbc335c94724061b5caaed3bb52b7cd) by JeffK (https://sketchfab.com/jeffkolada) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

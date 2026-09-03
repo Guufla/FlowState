@@ -34,7 +34,6 @@ public class NetworkedGameManager : NetworkBehaviour
     {
         if (!IsServerInitialized)
             return;
-        GameManager.Instance.SetGameStarting(true);
         StartGameObserversRpc();
     }
 
@@ -43,11 +42,12 @@ public class NetworkedGameManager : NetworkBehaviour
     [ObserversRpc]
     private void StartGameObserversRpc()
     {
-        Debug.Log("Game Started!");
+        //Debug.Log("Game Started!");
 
         // Hide lobby ai
         GameManager.Instance.GetUIManager().ChangeUIState(UIState.Start);
         curPlayers = GameManager.Instance.GetCurPlayers();
+        GameManager.Instance.SetGameStarting(true);
         
         
         // Start Race Logic
