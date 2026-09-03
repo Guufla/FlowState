@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement name="VisualElement" style="flex-grow: 1; max-height: 257px; max-width: 1516px; align-self: center; align-items: flex-start; align-content: flex-start; top: 122px; flex-direction: row; width: 703px; justify-content: center;">
-        <ui:Label text="Race Starts in...." name="RaceStartingLabel" style="font-size: 47px; -unity-font-definition: url(&quot;project://database/Assets/Ui/Fonts/Sprintura%20Demo.otf?fileID=12800000&amp;guid=dc7206ab0e5cddb41894190ac5b4fe87&amp;type=3#Sprintura Demo&quot;);"/>
+        <ui:Label text="Race Starts in...." name="RaceStartingLabel" style="font-size: 47px; -unity-font-definition: url(&quot;project://database/Assets/Ui/Fonts/Sprintura%20Demo.otf?fileID=12800000&amp;guid=dc7206ab0e5cddb41894190ac5b4fe87&amp;type=3#Sprintura Demo&quot;); -unity-text-outline-color: rgb(255, 255, 255); -unity-text-outline-width: 2px;"/>
         <ui:Label text="1" name="Count" style="font-size: 47px; -unity-font-definition: url(&quot;project://database/Assets/Ui/Fonts/Sprintura%20Demo.otf?fileID=12800000&amp;guid=dc7206ab0e5cddb41894190ac5b4fe87&amp;type=3#Sprintura Demo&quot;); -unity-text-outline-color: rgb(255, 255, 255); -unity-text-outline-width: 3px;"/>
     </ui:VisualElement>
 </ui:UXML>

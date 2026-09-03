@@ -96,7 +96,7 @@ public class LobbyManager : MonoBehaviour
         {
             relayCode = await StartHostWithRelay();
 
-            Debug.Log("Relay created: " + relayCode);
+            //Debug.Log("Relay created: " + relayCode);
             
             String finalName = "lobbyName";
 
@@ -142,7 +142,7 @@ public class LobbyManager : MonoBehaviour
             
             uiManager.ChangeUIState(UIState.Lobby);
             
-            Debug.Log("Created Lobby!! + " + lobby.Name + " " + lobby.MaxPlayers);
+            //Debug.Log("Created Lobby!! + " + lobby.Name + " " + lobby.MaxPlayers);
         }
         catch(LobbyServiceException e)
         {
@@ -161,7 +161,7 @@ public class LobbyManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("No Code entered");
+            //Debug.Log("No Code entered");
         }
     }
     
@@ -189,9 +189,9 @@ public class LobbyManager : MonoBehaviour
                 currentLobby.LobbyCode
             );
             
-            Debug.Log("Joined Lobby with code" + lobbyCode);
+            //Debug.Log("Joined Lobby with code" + lobbyCode);
 
-            Debug.Log("Relay code received from lobby: " + relayCode);
+            //Debug.Log("Relay code received from lobby: " + relayCode);
 
             bool connected = await StartClientWithRelay(relayCode);
             
@@ -199,7 +199,7 @@ public class LobbyManager : MonoBehaviour
             
             GameManager.Instance.SetServerInitialized();
             
-            Debug.Log("FishNet client started: " + connected);
+            //Debug.Log("FishNet client started: " + connected);
             
             int playerCount = 0;
             

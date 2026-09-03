@@ -192,7 +192,7 @@ public class UIManager : MonoBehaviour
         
         if(isBuffer)
         {
-            Debug.Log("SWITCHING COLOR");
+            //Debug.Log("SWITCHING COLOR");
             startGame.style.backgroundColor = new Color(StartGameInitialColor.r - 0.5f,StartGameInitialColor.g - 0.5f,StartGameInitialColor.b - 0.5f,0.5f);
         }
         else
@@ -450,7 +450,7 @@ public class UIManager : MonoBehaviour
 
     private void BackToLobby()
     {
-        Debug.Log("ClickedBackTOLobby");
+        //Debug.Log("ClickedBackTOLobby");
         ChangeUIState(UIState.Lobby);
     }
 }

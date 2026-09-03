@@ -14,6 +14,8 @@ public class PlayerInitialization : NetworkBehaviour
     private Rigidbody rigidbody;
     private CarMovement carMovement;
     
+    private PlayerDeath playerDeath;
+    
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -32,11 +34,27 @@ public class PlayerInitialization : NetworkBehaviour
             
             carMovement = GetComponent<CarMovement>();
             carMovement.enabled = false;
+
+            playerDeath = GetComponent<PlayerDeath>();
+            playerDeath.enabled = false;
+            
             
             NetworkedModelHandle = Instantiate(NetworkedModelPrefab);
             NetworkedModelHandle.GetComponent<NetworkedModel>().SetGameObject(gameObject);
             NetworkedModelHandle.SetActive(true);
             
         }
+    }
+    
+    [ServerRpc]
+    public void TeleportToSpawnServerRpc(Vector3 position, Quaternion rotation)
+    {
+        transform.position = position;
+        transform.rotation = rotation;
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 }
