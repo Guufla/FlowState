@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5290277119065547162}
   - component: {fileID: 1382544674073197170}
   - component: {fileID: 2429860338765504966}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584131318400519969
+  _initializedTimestamp: -8584131289738859146
 --- !u!114 &5290277119065547162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +280,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -298,13 +298,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1209966170656747871}
   - component: {fileID: 7722304100162158349}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1209966170656747871
 Transform:
   m_ObjectHideFlags: 0
@@ -335,7 +335,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

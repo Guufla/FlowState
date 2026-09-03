@@ -269,9 +269,11 @@ public class GameManager : MonoBehaviour
             playerObject.GetComponent<Rigidbody>().useGravity = false;
             playerObject.GetComponent<Rigidbody>().linearVelocity = new Vector3(0,0,0);
             playerObject.GetComponent<Rigidbody>().angularVelocity = new Vector3(0,0,0);
+            playerObject.GetComponent<Rigidbody>().position = spawn.position;
+            playerObject.GetComponent<Rigidbody>().rotation = spawn.rotation;
             playerObject.GetComponent<CarMovement>().enabled = false;
 
-            networkedGameManager.TeleportPlayerServerRpc(playerObject,spawn.position,spawn.rotation);
+            //networkedGameManager.TeleportPlayerServerRpc(playerObject,spawn.position,spawn.rotation);
             Debug.Log($"Player {playerName} spawned at {spawn.position} with rotation {spawn.rotation}");
 
             playerMovementScript.SetTargetInitialRotation(spawn.rotation);

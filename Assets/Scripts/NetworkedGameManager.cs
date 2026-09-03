@@ -76,7 +76,7 @@ public class NetworkedGameManager : NetworkBehaviour
 
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-
+        Debug.Log($"Teleporting player {player.name} to position {position} with rotation {rotation}");
         player.transform.SetPositionAndRotation(position, rotation);
     }
     
