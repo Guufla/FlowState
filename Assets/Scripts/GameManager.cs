@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     
-    private void Awake()
+    protected virtual void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -21,62 +21,79 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
     
-    [Header("References")]
-    [SerializeField] CarStateMachine        carStateMachine;
-    [SerializeField] InputManager           inputManager;
-    [SerializeField] SplineContainer        splines;
-    [SerializeField] CheckPointManager      checkPointManager;
-    [SerializeField] GameObject             carModel;
+    #region References
 
-    [SerializeField] NetworkedGameManager   networkedGameManager;
+    [Header("Core References")]
+    [SerializeField] protected CarStateMachine carStateMachine;
+    [SerializeField] protected InputManager inputManager;
+    [SerializeField] protected CheckPointManager checkPointManager;
+    [SerializeField] protected NetworkedGameManager networkedGameManager;
+    [SerializeField] protected UIManager uiManager;
+    [SerializeField] protected LobbyManager lobbyManager;
 
-    [SerializeField] UIManager              uiManager;
+    [Header("World References")]
+    [SerializeField] protected SplineContainer splines;
+    [SerializeField] protected GameObject carModel;
+    [SerializeField] protected List<GameObject> spawnPoints;
 
-    [SerializeField] LobbyManager           lobbyManager;
-    
-    [SerializeField] private PanelRenderer lobbyMenuPanel;
-    [SerializeField] private PanelRenderer lobbyJoinPanel;
-    [SerializeField] private PanelRenderer usernamePanel;
-    [SerializeField] private PanelRenderer placementPanel;
-    [SerializeField] private PanelRenderer winPanel;
-    [SerializeField] private PanelRenderer gameCountdownPanel;
+    #endregion
 
-    private CarMovement playerMovementScript;
+    #region UI Panels
 
-    [Header("Variables")]
-    [SerializeField] private List<GameObject> spawnPoints;
-    private GameObject playerObject;
+    [Header("UI Panels")]
+    [SerializeField] protected PanelRenderer lobbyMenuPanel;
+    [SerializeField] protected PanelRenderer lobbyJoinPanel;
+    [SerializeField] protected PanelRenderer usernamePanel;
+    [SerializeField] protected PanelRenderer placementPanel;
+    [SerializeField] protected PanelRenderer winPanel;
+    [SerializeField] protected PanelRenderer gameCountdownPanel;
 
-    private int playerIndex;
-    private bool isHost = false;
+    #endregion
 
-    private float playerPositionWeight;
+    #region Player
 
-    private int maxPlayers;
+    [Header("Player")]
+    protected GameObject playerObject;
+    protected CarMovement playerMovementScript;
 
-    private int curPlayers;
+    protected string playerName;
+    protected int playerIndex;
+    protected int playerPlacement;
 
-    private bool serverInitialized;
+    protected float playerPositionWeight;
+    protected float curPlacementWeight;
 
-    private int playerPlacement;
+    #endregion
 
-    private float curPlacementWeight;
+    #region Player Management
 
-    private string playerName;
+    [Header("Player Management")]
+    protected int maxPlayers;
+    protected int curPlayers;
 
-    private bool isGameStarted;
-    private bool isGameStarting;
+    protected List<float> playerPlacementWeights;
 
-    public float gameCountdown;
+    #endregion
 
-    private List<float> playerPlacementWeights;
-    
+    #region Game State
+
+    [Header("Game State")]
+    protected bool isHost;
+    protected bool serverInitialized;
+    protected bool isGameStarted;
+    protected bool isGameStarting;
+
+    [SerializeField] protected float gameCountdown;
+
+    #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     // Update is called once per frame
     
-    void Update()
+       // Update is called once per frame
+    
+    protected virtual void Update()
     {
         if(!isGameStarted)
         {
@@ -92,7 +109,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void FixedUpdate()
+    protected virtual void  FixedUpdate()
     {
         if(isGameStarting)
         {
@@ -100,11 +117,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Start()
+    protected virtual void Start()
     {
         networkedGameManager.gameObject.SetActive(true);
         lobbyManager.gameObject.SetActive(true);
+        
     }
+    
+    
+    #region Player Placement
     
     private void PlayerPlacement()
     {
@@ -123,18 +144,27 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    public int GetPlayerPlacement()
+    {
+        return playerPlacement;
+    }
+    
     public void PlayerFinished()
     {
         networkedGameManager.UpdatePlayersFinishedServerRpc(playerName, playerPlacement);
     }
     
+    #endregion
     
+    
+    #region Player
     
     public void SetPlayer(GameObject playerObject)
     {
         this.playerObject = playerObject;
         playerMovementScript = playerObject.GetComponent<CarMovement>();
     }
+    
     public GameObject GetPlayer()
     {
         if(playerObject != null)
@@ -147,26 +177,6 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    public CarStateMachine GetStateMachine()
-    {
-        return carStateMachine;
-    }
-    public InputManager GetInputManager()
-    {
-        return inputManager;
-    }
-    public SplineContainer GetSplineContainer()
-    {
-        return splines;
-    }
-    public CheckPointManager GetCheckPointManager()
-    {
-        return checkPointManager;
-    }
-    public GameObject GetCarModel()
-    {
-        return carModel;
-    }
     public void SetPlayerIndex(int playerIndex)
     {
         this.playerIndex = playerIndex;
@@ -174,72 +184,6 @@ public class GameManager : MonoBehaviour
         {
             isHost = true;
         }
-    }
-    public void SetMaxPlayers(int maxPlayers)
-    {
-        this.maxPlayers = maxPlayers;
-    }
-    public int GetMaxPlayers()
-    {
-        return maxPlayers;
-    }
-    public void SetCurPlayers(int curPlayers)
-    {
-        this.curPlayers = curPlayers;
-    }
-    public int GetCurPlayers()
-    {
-        return curPlayers;
-    }
-    public void SetServerInitialized()
-    {
-        serverInitialized = true;
-    }
-    public bool GetServerInitialized()
-    {
-        return serverInitialized;
-    }
-    
-    public PanelRenderer GetLobbyMenuPanel()
-    {
-        return lobbyMenuPanel;
-    }
-
-    public PanelRenderer GetLobbyJoinPanel()
-    {
-        return lobbyJoinPanel;
-    }
-
-    public PanelRenderer GetUserNamePanel()
-    {
-        return usernamePanel;
-    }
-
-    public PanelRenderer GetPlacementPanel()
-    {
-        return placementPanel;
-    }
-    public PanelRenderer GetWinPanel()
-    {
-        return winPanel;
-    }
-    public PanelRenderer GetCountdownPanel()
-    {
-        return gameCountdownPanel;
-    }
-    
-    public int GetPlayerPlacement()
-    {
-        return playerPlacement;
-    }
-    
-    public UIManager GetUIManager()
-    {
-        return uiManager;
-    }
-    public NetworkedGameManager GetNetworkedGameManager()
-    {
-        return networkedGameManager;
     }
     
     public void SetPlayerName(string playerName)
@@ -251,6 +195,52 @@ public class GameManager : MonoBehaviour
     {
         return playerName;
     }
+    
+    #endregion
+    
+    
+    #region Player Count
+    
+    public void SetMaxPlayers(int maxPlayers)
+    {
+        this.maxPlayers = maxPlayers;
+    }
+    
+    public int GetMaxPlayers()
+    {
+        return maxPlayers;
+    }
+    
+    public void SetCurPlayers(int curPlayers)
+    {
+        this.curPlayers = curPlayers;
+    }
+    
+    public int GetCurPlayers()
+    {
+        return curPlayers;
+    }
+    
+    #endregion
+    
+    
+    #region Server
+    
+    public void SetServerInitialized()
+    {
+        serverInitialized = true;
+    }
+    
+    public bool GetServerInitialized()
+    {
+        return serverInitialized;
+    }
+    
+    #endregion
+    
+    
+    #region Game State
+    
     public void SetGameStarting(bool isGameStarting)
     {
         if(isGameStarting)
@@ -312,6 +302,84 @@ public class GameManager : MonoBehaviour
     {
         return isGameStarted;
     }
+    
+    #endregion
+    
+    
+    #region Core References
+    
+    public CarStateMachine GetStateMachine()
+    {
+        return carStateMachine;
+    }
+    
+    public InputManager GetInputManager()
+    {
+        return inputManager;
+    }
+    
+    public SplineContainer GetSplineContainer()
+    {
+        return splines;
+    }
+    
+    public CheckPointManager GetCheckPointManager()
+    {
+        return checkPointManager;
+    }
+    
+    public GameObject GetCarModel()
+    {
+        return carModel;
+    }
+    
+    public UIManager GetUIManager()
+    {
+        return uiManager;
+    }
+    
+    public NetworkedGameManager GetNetworkedGameManager()
+    {
+        return networkedGameManager;
+    }
+    
+    #endregion
+    
+    
+    #region UI Panels
+    
+    public PanelRenderer GetLobbyMenuPanel()
+    {
+        return lobbyMenuPanel;
+    }
+
+    public PanelRenderer GetLobbyJoinPanel()
+    {
+        return lobbyJoinPanel;
+    }
+
+    public PanelRenderer GetUserNamePanel()
+    {
+        return usernamePanel;
+    }
+
+    public PanelRenderer GetPlacementPanel()
+    {
+        return placementPanel;
+    }
+    
+    public PanelRenderer GetWinPanel()
+    {
+        return winPanel;
+    }
+    
+    public PanelRenderer GetCountdownPanel()
+    {
+        return gameCountdownPanel;
+    }
+    
+    #endregion
+
 }
 
 

@@ -104,7 +104,7 @@ public class CarMovement : NetworkBehaviour
 
     void Update()
     {
-        if (!IsOwner) return;
+        if (playerinitialization.isPlayer == false) return;
 
         GetInput();
 
@@ -113,7 +113,7 @@ public class CarMovement : NetworkBehaviour
 
     void FixedUpdate()
     {
-        if (!IsOwner) return;
+        if (playerinitialization.isPlayer == false) return;
         
         if(!GameManager.Instance.GetGameStart())
         {
