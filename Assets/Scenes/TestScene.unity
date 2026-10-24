@@ -5933,12 +5933,12 @@ MonoBehaviour:
   m_Container: {fileID: 1666061910}
   m_TargetMesh: {fileID: 0}
   m_RebuildOnSplineChange: 1
-  m_RebuildFrequency: 30
+  m_RebuildFrequency: 28
   m_UpdateColliders: 1
   m_Sides: 8
   m_SegmentsPerUnit: 4
   m_Capped: 0
-  m_Radius: 18.6
+  m_Radius: 17.2
   m_Range: {x: 0, y: 1}
   m_FlipNormals: 0
   m_Shape:
